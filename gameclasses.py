@@ -64,7 +64,7 @@ class Rectangle:
         return pygame.Rect(self.posx,coord(self.posy,height),self.sizex,self.sizey)
 
     def draw(self,win,height):
-        pygame.draw.rect(win,self.colour,(self.posx,coord(self.posy,height),self.sizex,self.sizey))
+        pygame.draw.circle(win,self.colour,(self.posx,self.posy),self.sizex)
     
 
 
