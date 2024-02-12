@@ -21,10 +21,8 @@ font = pygame.font.Font('Gidole-Regular.otf', 25)
 texts = [font.render('Draw',True,(255,255,255)),font.render('Force',True,(255,255,255)),font.render('Gravity',True,(255,255,255)),font.render('Start',True,(255,255,255))]
 textsBool=[True,False,True,False]
 
-grounds = [Rectangle(0,10,1000000000,(255,255,255),WIDTH,10),Rectangle(0,HEIGHT,1000000000,(255,255,255),10,WIDTH),Rectangle(0,HEIGHT+10,1000000000,(100,100,100),WIDTH,20),Rectangle(WIDTH-10,HEIGHT,1000000000,(100,100,100),10,WIDTH)]
-for i in range(50):
-    #objlis.append(Rectangle(random.randint(0,1900),random.randint(0,1000),random.randint(0,10),(0,0,0),random.randint(0,2),0))
-    objlis.append(Rectangle(50,50,10,(0,0,0),10,10))
+grounds = [Rectangle(0,10,1000000000,(100,100,100),WIDTH,10),Rectangle(0,HEIGHT,1000000000,(100,100,100),10,WIDTH),Rectangle(0,HEIGHT+10,1000000000,(100,100,100),WIDTH,20),Rectangle(WIDTH-10,HEIGHT,1000000000,(100,100,100),10,WIDTH)]
+
 click = False
 
 while True:
@@ -32,7 +30,14 @@ while True:
         if events.type==pygame.QUIT:
             pygame.quit()
             break
+        if events.type==pygame.MOUSEBUTTONDOWN and textsBool[0]:
+            posx,posy=pygame.mouse.get_pos()
 
+            if not (posx>WIDTH-80 and posy<108):
+                objlis.append(Rectangle(posx,coord(posy,HEIGHT),10,(random.randint(100,255),random.randint(100,255),random.randint(100,255)),20,20))
+                if textsBool[1]:
+                    objlis[len(objlis)-1].velx=10
+                    objlis[len(objlis)-1].vely=0
 
     win.fill((0,0,0))
 
